@@ -1,0 +1,43 @@
+{
+  "dataset_id": "DailyTemperature",
+  "version": "2026.1",
+  "artifact_sha256": "4087ccfe449e713786b38ce403645ed10743c4432ea299f355c1219b17ea2381",
+  "sources": [
+    {
+      "dataset_id": "StationObservations",
+      "version": "1.0",
+      "artifact_sha256": "3b2373075c4819348b9e5aa2b02b9fa0d9b4ceea8fc154e3ef2dea89d0140d25"
+    }
+  ],
+  "transformation": "Group all rows by UTC date and compute the arithmetic mean of temperature_c in Celsius; no filtering or enrichment.",
+  "evidence": [
+    {
+      "role": "release",
+      "subject": "DailyTemperature",
+      "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/release.md",
+      "sha256": "937f3aff665eee2b9db69bb56ce84f845f40f5e553cf4a349e942cd6e3b4c8de",
+      "bytes": 712
+    },
+    {
+      "role": "source",
+      "subject": "StationObservations",
+      "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/source.md",
+      "sha256": "df753b7ec6dfeb71ced9f9d302fb03cdd8bc7826d490f7911d194ed0b23a53e0",
+      "bytes": 397
+    },
+    {
+      "role": "transform",
+      "subject": "DailyTemperature",
+      "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/transform.md",
+      "sha256": "cba824d3bf0cfeade43356ed874f7c939ae53062b4c701ab2dd30c2814b05b11",
+      "bytes": 614
+    },
+    {
+      "role": "policy",
+      "subject": "DailyTemperature",
+      "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/policy.md",
+      "sha256": "b89b8652af4263b727144309484d3cab2a72f8f52e90fac5138b69f93ea082b0",
+      "bytes": 619
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 A reusable GenLayer Intelligent Contract that seals documentary dataset provenance from authenticated, commit-pinned public evidence. AI interprets provenance; deterministic code controls evidence integrity, identity commitments, decision derivation and immutable history.
 
+Confirmed live deployment: [0x4cE703B965B121e243cE517e62Eff58d5c9E50E7](https://explorer-studio.genlayer.com/address/0x4cE703B965B121e243cE517e62Eff58d5c9E50E7). Full Consensus finalized **CONFLICTING_LINEAGE** for the wrong upstream version. 74 tests and GenVM lint/SDK validation pass. [Deployment receipts and source match](docs/DEPLOYMENT.md).
+
 ## What it does
 
 A deployment fixes a publication-repository trust allowlist. A caller submits an immutable package identifying a dataset release, 1–4 claimed upstream releases, their artifact SHA-256 digests, transformation claim, and exactly one release, one document per source, one transformation and one policy document. Evidence must use full 40-hex GitHub commit pins, expected SHA-256 and byte length. No branches, tags, credentials, arbitrary hosts, query strings or path traversal.
@@ -15,7 +17,7 @@ Leader and validators independently GET every file and verify status, raw bytes,
 | CONFLICTING_LINEAGE | Documents explicitly contradict a claimed version, digest, source or transformation |
 | INCONCLUSIVE | Failed integrity/retrieval/model checks or ambiguous assessment; never positive certification |
 
-UNKNOWN dominates conflict/gap. Validators compare exact objective fingerprints and check statuses; differing quotations are allowed only after literal grounding checks and a second source-grounded semantic citation judgment. A well-shaped answer alone never passes validation.
+UNKNOWN dominates conflict/gap. The audit model selects bounded excerpt indexes; deterministic code resolves them into exact authenticated quotations. Validators compare exact objective fingerprints and check statuses; differing quotations are allowed only after literal grounding checks and a second source-grounded semantic citation judgment. A well-shaped answer alone never passes validation.
 
 ## Interface
 
@@ -35,6 +37,7 @@ python -m pytest -q tests
 # executable may be in ~/.local/bin
  genvm-lint check contracts/lineage_seal.py
  genvm-lint schema contracts/lineage_seal.py
+python scripts/verify_live.py  # read-only: no wallet or consensus writes
 ```
 
 Direct tests use the official runner SDK and mocked I/O; they exercise captured validator functions explicitly. They are not a substitute for real Full Consensus. See [deployment](docs/DEPLOYMENT.md), [security](docs/SECURITY.md), [evidence](docs/EVIDENCE.md) and [submission](docs/SUBMISSION.md) for confirmed live results.
@@ -56,4 +59,4 @@ Checked on 2026-10-12:
 - [Prompt injection](https://docs.genlayer.com/developers/intelligent-contracts/security-and-best-practices/prompt-injection)
 - [GenVM lint and validation](https://docs.genlayer.com/api-references/genlayer-linter)
 
-The exact pinned SDK exposes `Response.status` (not `status_code`) and JSON-format `exec_prompt` returns a dictionary. Both are tested against the actual SDK rather than copied from an inconsistent documentation example.
+The pinned SDK exposes `Response.status` (not `status_code`). JSON-format `exec_prompt` may produce a decoded dictionary or JSON text depending on the provider; both pass through strict bounded validation. Indexed citations avoid requiring models to reproduce hashes and punctuation exactly. Tests cover these behaviors; live results remain separate from mocked evidence.

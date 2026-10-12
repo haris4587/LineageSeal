@@ -1,0 +1,23 @@
+{
+  "network": "Studionet",
+  "chain_id": 61999,
+  "verified_at": "2026-10-12",
+  "address": "0x4cE703B965B121e243cE517e62Eff58d5c9E50E7",
+  "sender": "0xabDa0405Bb3306647c4f03653017a3AD733FB9BC",
+  "source_commit": "dfb05b2bb4046bbc9b1116c97fde44bca19a0cdf",
+  "fixture_commit": "43cde57c0a171ffaa8d37eca075550cd7131f116",
+  "source_sha256": "023b57fec17ade002f25a4010d579add2df2c879403571045b55d93970be8364",
+  "request_id": "67b3c6f49645119f14b9983a6621461ad0f5f358acc24aabd54c1e4e2b21d04a",
+  "outcome": "CONFLICTING_LINEAGE",
+  "decision_hash": "45b1a7b4d84c0a6017e0b2c4e408ed6ee71ea35ee800ddde1d9ad96b8bda2fbe",
+  "package_hash": "5e497d6e48075a21f7c3758bb58c0d7f9192b5fcc935d3498d0caf8053eaf27d",
+  "baseline_hash": "118c158e1e0d7908248b4f3f4cb94d17d5183b38ab9496dc649b95282e20fea1",
+  "transactions": {
+    "deployment": "0xd6823975b6e1e9084f1e263483ccce10124628d1dbac9a3093aae3fb626e1345",
+    "submit": "0x5c24655135c9df259dba544ab9ec28136fcf1c206becea1dcaaff138a57a2c33",
+    "evaluate": "0x6f2ac8c3b0a102603b20e01d9d3efc8072031ae50bd2bf4fbb2371427d78e975"
+  },
+  "test_count": 74,
+  "full_consensus": true,
+  "leader_rotations": 1
+}

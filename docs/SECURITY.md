@@ -12,7 +12,7 @@ Only the submitter can evaluate their immutable request, so strangers cannot exh
 
 The leader does not select sources at assessment time: evidence is already committed. Every validator independently retrieves the same files, checks hashes/lengths, runs the same provenance analysis, validates leader schema and literal quotations against its own fetched bytes, requires exact per-check status agreement and evaluates semantic relevance of the citations. Validator errors reject the candidate. Transport/model failures can only yield INCONCLUSIVE; disagreements remain protocol-level undetermined/reverted, with no contract state update.
 
-Quotes do not have to be identical across nodes. Objective evidence fingerprints, reason, derived outcome and per-check decisions must match. The second citation prompt prevents a literal but irrelevant quote from being accepted merely because it appears in an authenticated file.
+The fixed baseline separates output release identity, upstream identity, lineage edges, operation/parameters and policy compliance, so a source-version conflict cannot arbitrarily contaminate the operation check. Audit output uses explicitly labeled evidence/excerpt indexes, with integer-only bounds checks. The contract resolves these references to exact text split from authenticated documents, never model-generated quotations. Literal and semantic validation still apply to the resolved quotations. Quotes do not have to be identical across nodes. Objective evidence fingerprints, reason, derived outcome and per-check decisions must match. The second citation prompt prevents a literal but irrelevant quote from being accepted merely because it appears in an authenticated file.
 
 ## Prompt injection
 

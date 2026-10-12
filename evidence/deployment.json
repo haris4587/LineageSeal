@@ -1,0 +1,65 @@
+{
+  "hash": "0xd6823975b6e1e9084f1e263483ccce10124628d1dbac9a3093aae3fb626e1345",
+  "from_address": "0xabDa0405Bb3306647c4f03653017a3AD733FB9BC",
+  "to_address": "0x4cE703B965B121e243cE517e62Eff58d5c9E50E7",
+  "status": "FINALIZED",
+  "result": 6,
+  "leader_only": false,
+  "execution_mode": "NORMAL",
+  "eq_blocks_outputs": "0xcdc6c28000c0c080c5c480c28000",
+  "consensus_history": {
+    "rounds": [
+      {
+        "round": "Accepted",
+        "status_changes": [
+          "PENDING",
+          "PROPOSING",
+          "COMMITTING",
+          "REVEALING",
+          "ACCEPTED"
+        ]
+      }
+    ],
+    "current_status_changes": [
+      "FINALIZED"
+    ]
+  },
+  "result_name": "MAJORITY_AGREE",
+  "created_at": "2026-10-12T08:08:20.519156+00:00",
+  "rotation_count": 0,
+  "votes": {
+    "0x14402D49f317CE1a2F35BAE01b1804A2A9703dCb": "agree",
+    "0x3D83ab507785b95ca5C208bEc80CCe3D5ca98100": "agree",
+    "0x5310dcF075E0BD47d29B8ec6581F736C767f54D2": "agree",
+    "0xDB1c35c1f05d885999b8f13e5735307BcC16Be88": "agree",
+    "0xacc2459F341D7a887bcA8FAA62F1EC9378d4Bc67": "agree"
+  },
+  "validator_results": [
+    {
+      "address": "0x14402D49f317CE1a2F35BAE01b1804A2A9703dCb",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0xacc2459F341D7a887bcA8FAA62F1EC9378d4Bc67",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x3D83ab507785b95ca5C208bEc80CCe3D5ca98100",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x5310dcF075E0BD47d29B8ec6581F736C767f54D2",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    }
+  ],
+  "input_data_sha256": "14aecf699699cf5ad585ad74c8a336b48275116358406612b9b0b819fd1ed319",
+  "snapshot_note": "Selected public fields from eth_getTransactionByHash; provider configuration and redundant runtime internals omitted."
+}

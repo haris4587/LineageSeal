@@ -1,0 +1,75 @@
+{
+  "hash": "0x6f2ac8c3b0a102603b20e01d9d3efc8072031ae50bd2bf4fbb2371427d78e975",
+  "from_address": "0xabDa0405Bb3306647c4f03653017a3AD733FB9BC",
+  "to_address": "0x4cE703B965B121e243cE517e62Eff58d5c9E50E7",
+  "status": "FINALIZED",
+  "result": 6,
+  "leader_only": false,
+  "execution_mode": "NORMAL",
+  "eq_blocks_outputs": "0xd2c6c28000c0c080cac480c28000c401c28000",
+  "consensus_history": {
+    "rounds": [
+      {
+        "round": "Leader Rotation",
+        "status_changes": [
+          "PENDING",
+          "PROPOSING",
+          "COMMITTING",
+          "REVEALING"
+        ]
+      },
+      {
+        "round": "Accepted",
+        "status_changes": [
+          "PROPOSING",
+          "COMMITTING",
+          "REVEALING",
+          "ACCEPTED"
+        ]
+      }
+    ],
+    "current_status_changes": [
+      "FINALIZED"
+    ]
+  },
+  "result_name": "MAJORITY_AGREE",
+  "created_at": "2026-10-12T08:12:12.471920+00:00",
+  "data": {
+    "calldata": "FgRhcmdzDYQENjdiM2M2ZjQ5NjQ1MTE5ZjE0Yjk5ODNhNjYyMTQ2MWFkMGY1ZjM1OGFjYzI0YWFiZDU0YzFlNGUyYjIxZDA0YQZtZXRob2REZXZhbHVhdGU="
+  },
+  "rotation_count": 1,
+  "votes": {
+    "0x03D58A4DeF6fDFc032A56374785a5F571D07Bc11": "agree",
+    "0x14402D49f317CE1a2F35BAE01b1804A2A9703dCb": "idle",
+    "0x772ffCd1dF6Cc566eC4b8d3f4F4f8eBbb6B36C84": "agree",
+    "0xDB1c35c1f05d885999b8f13e5735307BcC16Be88": "agree",
+    "0xec2Fb79cd12255Eb34886CEd7332f27B98DEe658": "idle"
+  },
+  "validator_results": [
+    {
+      "address": "0xec2Fb79cd12255Eb34886CEd7332f27B98DEe658",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0xDB1c35c1f05d885999b8f13e5735307BcC16Be88",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x772ffCd1dF6Cc566eC4b8d3f4F4f8eBbb6B36C84",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x03D58A4DeF6fDFc032A56374785a5F571D07Bc11",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    }
+  ],
+  "snapshot_note": "Selected public fields from eth_getTransactionByHash; provider configuration and redundant runtime internals omitted."
+}

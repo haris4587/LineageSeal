@@ -1,0 +1,171 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "baseline_hash": "118c158e1e0d7908248b4f3f4cb94d17d5183b38ab9496dc649b95282e20fea1",
+      "decision_hash": "45b1a7b4d84c0a6017e0b2c4e408ed6ee71ea35ee800ddde1d9ad96b8bda2fbe",
+      "domain": "LineageSeal/v1",
+      "package_hash": "5e497d6e48075a21f7c3758bb58c0d7f9192b5fcc935d3498d0caf8053eaf27d",
+      "request_id": "67b3c6f49645119f14b9983a6621461ad0f5f358acc24aabd54c1e4e2b21d04a",
+      "result": {
+        "checks": [
+          {
+            "check": "release",
+            "citations": [
+              {
+                "evidence": 0,
+                "quote": "Dataset ID: DailyTemperature. Version: 2026.1."
+              },
+              {
+                "evidence": 0,
+                "quote": "Artifact SHA-256: 4087ccfe449e713786b38ce403645ed10743c4432ea299f355c1219b17ea2381"
+              }
+            ],
+            "status": "SUPPORTED"
+          },
+          {
+            "check": "source:StationObservations",
+            "citations": [
+              {
+                "evidence": 1,
+                "quote": "Dataset ID: StationObservations. Version: 1.0."
+              },
+              {
+                "evidence": 1,
+                "quote": "Artifact SHA-256: 3b2373075c4819348b9e5aa2b02b9fa0d9b4ceea8fc154e3ef2dea89d0140d25"
+              }
+            ],
+            "status": "CONFLICT"
+          },
+          {
+            "check": "lineage:StationObservations",
+            "citations": [
+              {
+                "evidence": 0,
+                "quote": "The only source is StationObservations version 1.0, artifact SHA-256 3b2373075c4819348b9e5aa2b02b9fa0d9b4ceea8fc154e3ef2dea89d0140d25."
+              },
+              {
+                "evidence": 0,
+                "quote": "This release explicitly does NOT derive from StationObservations version 2.0."
+              },
+              {
+                "evidence": 2,
+                "quote": "Input: StationObservations version 1.0, SHA-256 3b2373075c4819348b9e5aa2b02b9fa0d9b4ceea8fc154e3ef2dea89d0140d25."
+              }
+            ],
+            "status": "CONFLICT"
+          },
+          {
+            "check": "transformation",
+            "citations": [
+              {
+                "evidence": 2,
+                "quote": "Group rows by UTC date and compute the arithmetic mean of temperature_c in Celsius."
+              },
+              {
+                "evidence": 2,
+                "quote": "All input rows participate; there is no filtering or external enrichment."
+              },
+              {
+                "evidence": 2,
+                "quote": "Parameters: group column=date; value column=temperature_c; aggregate=arithmetic mean; unit=Celsius; timezone=UTC."
+              }
+            ],
+            "status": "SUPPORTED"
+          },
+          {
+            "check": "policy",
+            "citations": [
+              {
+                "evidence": 3,
+                "quote": "Release, source and transformation documents must agree with each other and the submitted claim."
+              },
+              {
+                "evidence": 3,
+                "quote": "A missing required fact is a provenance gap; an explicit contradictory version or digest is conflicting lineage."
+              },
+              {
+                "evidence": 0,
+                "quote": "This release explicitly does NOT derive from StationObservations version 2.0."
+              }
+            ],
+            "status": "CONFLICT"
+          }
+        ],
+        "fingerprints": [
+          {
+            "bytes": 712,
+            "sha256": "937f3aff665eee2b9db69bb56ce84f845f40f5e553cf4a349e942cd6e3b4c8de",
+            "status": "AUTHENTICATED"
+          },
+          {
+            "bytes": 397,
+            "sha256": "df753b7ec6dfeb71ced9f9d302fb03cdd8bc7826d490f7911d194ed0b23a53e0",
+            "status": "AUTHENTICATED"
+          },
+          {
+            "bytes": 614,
+            "sha256": "cba824d3bf0cfeade43356ed874f7c939ae53062b4c701ab2dd30c2814b05b11",
+            "status": "AUTHENTICATED"
+          },
+          {
+            "bytes": 619,
+            "sha256": "b89b8652af4263b727144309484d3cab2a72f8f52e90fac5138b69f93ea082b0",
+            "status": "AUTHENTICATED"
+          }
+        ],
+        "outcome": "CONFLICTING_LINEAGE",
+        "reason": "ASSESSED"
+      }
+    }
+  ],
+  "baseline_hash": "118c158e1e0d7908248b4f3f4cb94d17d5183b38ab9496dc649b95282e20fea1",
+  "id": "67b3c6f49645119f14b9983a6621461ad0f5f358acc24aabd54c1e4e2b21d04a",
+  "package": {
+    "artifact_sha256": "4087ccfe449e713786b38ce403645ed10743c4432ea299f355c1219b17ea2381",
+    "dataset_id": "DailyTemperature",
+    "evidence": [
+      {
+        "bytes": 712,
+        "role": "release",
+        "sha256": "937f3aff665eee2b9db69bb56ce84f845f40f5e553cf4a349e942cd6e3b4c8de",
+        "subject": "DailyTemperature",
+        "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/release.md"
+      },
+      {
+        "bytes": 397,
+        "role": "source",
+        "sha256": "df753b7ec6dfeb71ced9f9d302fb03cdd8bc7826d490f7911d194ed0b23a53e0",
+        "subject": "StationObservations",
+        "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/source.md"
+      },
+      {
+        "bytes": 614,
+        "role": "transform",
+        "sha256": "cba824d3bf0cfeade43356ed874f7c939ae53062b4c701ab2dd30c2814b05b11",
+        "subject": "DailyTemperature",
+        "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/transform.md"
+      },
+      {
+        "bytes": 619,
+        "role": "policy",
+        "sha256": "b89b8652af4263b727144309484d3cab2a72f8f52e90fac5138b69f93ea082b0",
+        "subject": "DailyTemperature",
+        "url": "https://raw.githubusercontent.com/haris4587/LineageSeal/43cde57c0a171ffaa8d37eca075550cd7131f116/fixtures/policy.md"
+      }
+    ],
+    "sources": [
+      {
+        "artifact_sha256": "3b2373075c4819348b9e5aa2b02b9fa0d9b4ceea8fc154e3ef2dea89d0140d25",
+        "dataset_id": "StationObservations",
+        "version": "2.0"
+      }
+    ],
+    "transformation": "Group all rows by UTC date and compute the arithmetic mean of temperature_c in Celsius; no filtering or enrichment.",
+    "version": "2026.1"
+  },
+  "package_hash": "5e497d6e48075a21f7c3758bb58c0d7f9192b5fcc935d3498d0caf8053eaf27d",
+  "sequence": 1,
+  "status": "CONFLICTING_LINEAGE",
+  "submitter": "0xabDa0405Bb3306647c4f03653017a3AD733FB9BC"
+}

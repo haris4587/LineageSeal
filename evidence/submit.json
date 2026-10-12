@@ -1,0 +1,67 @@
+{
+  "hash": "0x5c24655135c9df259dba544ab9ec28136fcf1c206becea1dcaaff138a57a2c33",
+  "from_address": "0xabDa0405Bb3306647c4f03653017a3AD733FB9BC",
+  "to_address": "0x4cE703B965B121e243cE517e62Eff58d5c9E50E7",
+  "status": "FINALIZED",
+  "result": 6,
+  "leader_only": false,
+  "execution_mode": "NORMAL",
+  "eq_blocks_outputs": "0xcdc6c28000c0c080c5c480c28000",
+  "consensus_history": {
+    "rounds": [
+      {
+        "round": "Accepted",
+        "status_changes": [
+          "PENDING",
+          "PROPOSING",
+          "COMMITTING",
+          "REVEALING",
+          "ACCEPTED"
+        ]
+      }
+    ],
+    "current_status_changes": [
+      "FINALIZED"
+    ]
+  },
+  "result_name": "MAJORITY_AGREE",
+  "created_at": "2026-10-12T08:10:28.032954+00:00",
+  "data": {
+    "calldata": "FgRhcmdzDdRceyJkYXRhc2V0X2lkIjoiRGFpbHlUZW1wZXJhdHVyZSIsInZlcnNpb24iOiIyMDI2LjEiLCJhcnRpZmFjdF9zaGEyNTYiOiI0MDg3Y2NmZTQ0OWU3MTM3ODZiMzhjZTQwMzY0NWVkMTA3NDNjNDQzMmVhMjk5ZjM1NWMxMjE5YjE3ZWEyMzgxIiwic291cmNlcyI6W3siZGF0YXNldF9pZCI6IlN0YXRpb25PYnNlcnZhdGlvbnMiLCJ2ZXJzaW9uIjoiMi4wIiwiYXJ0aWZhY3Rfc2hhMjU2IjoiM2IyMzczMDc1YzQ4MTkzNDhiOWU1YWEyYjAyYjlmYTBkOWI0Y2VlYThmYzE1NGUzZWYyZGVhODlkMDE0MGQyNSJ9XSwidHJhbnNmb3JtYXRpb24iOiJHcm91cCBhbGwgcm93cyBieSBVVEMgZGF0ZSBhbmQgY29tcHV0ZSB0aGUgYXJpdGhtZXRpYyBtZWFuIG9mIHRlbXBlcmF0dXJlX2MgaW4gQ2Vsc2l1czsgbm8gZmlsdGVyaW5nIG9yIGVucmljaG1lbnQuIiwiZXZpZGVuY2UiOlt7InJvbGUiOiJyZWxlYXNlIiwic3ViamVjdCI6IkRhaWx5VGVtcGVyYXR1cmUiLCJ1cmwiOiJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaGFyaXM0NTg3L0xpbmVhZ2VTZWFsLzQzY2RlNTdjMGExNzFmZmFhOGQzN2VjYTA3NTU1MGNkNzEzMWYxMTYvZml4dHVyZXMvcmVsZWFzZS5tZCIsInNoYTI1NiI6IjkzN2YzYWZmNjY1ZWVlMmI5ZGI2OWJiNTZjZTg0Zjg0NWY0MGY1ZTU1M2NmNGEzNDllOTQyY2Q2ZTNiNGM4ZGUiLCJieXRlcyI6NzEyfSx7InJvbGUiOiJzb3VyY2UiLCJzdWJqZWN0IjoiU3RhdGlvbk9ic2VydmF0aW9ucyIsInVybCI6Imh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9oYXJpczQ1ODcvTGluZWFnZVNlYWwvNDNjZGU1N2MwYTE3MWZmYWE4ZDM3ZWNhMDc1NTUwY2Q3MTMxZjExNi9maXh0dXJlcy9zb3VyY2UubWQiLCJzaGEyNTYiOiJkZjc1M2I3ZWM2ZGZlYjcxY2VkOWY5ZDMwMmZiMDNjZGQ4YmM3ODI2ZDQ5MGY3OTExZDE5NGVkMGIyM2E1M2UwIiwiYnl0ZXMiOjM5N30seyJyb2xlIjoidHJhbnNmb3JtIiwic3ViamVjdCI6IkRhaWx5VGVtcGVyYXR1cmUiLCJ1cmwiOiJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaGFyaXM0NTg3L0xpbmVhZ2VTZWFsLzQzY2RlNTdjMGExNzFmZmFhOGQzN2VjYTA3NTU1MGNkNzEzMWYxMTYvZml4dHVyZXMvdHJhbnNmb3JtLm1kIiwic2hhMjU2IjoiY2JhODI0ZDNiZjBjZmVhZGU0MzM1NmVkODc0ZjdjOTM5YWU1MzA2MmI0YzcwMWFiMmRkMzBjMjgxNGIwNWIxMSIsImJ5dGVzIjo2MTR9LHsicm9sZSI6InBvbGljeSIsInN1YmplY3QiOiJEYWlseVRlbXBlcmF0dXJlIiwidXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hhcmlzNDU4Ny9MaW5lYWdlU2VhbC80M2NkZTU3YzBhMTcxZmZhYThkMzdlY2EwNzU1NTBjZDcxMzFmMTE2L2ZpeHR1cmVzL3BvbGljeS5tZCIsInNoYTI1NiI6ImI4OWI4NjUyYWY0MjYzYjcyNzE0NDMwOTQ4NGQzY2FiMmE3MmY4ZjUyZTkwZmFjNTEzOGI2OWY5M2VhMDgyYjAiLCJieXRlcyI6NjE5fV19Bm1ldGhvZDRzdWJtaXQ="
+  },
+  "rotation_count": 0,
+  "votes": {
+    "0x03D58A4DeF6fDFc032A56374785a5F571D07Bc11": "agree",
+    "0x3D83ab507785b95ca5C208bEc80CCe3D5ca98100": "agree",
+    "0x3E5ee2507cc167C9925Bf10c67D7986581112024": "agree",
+    "0x4aba638Cf0Cf5249437AaD968fC69dde46ae6BAC": "agree",
+    "0x90402341F0B0e97b23023c0a87de957FB7148E0F": "agree"
+  },
+  "validator_results": [
+    {
+      "address": "0x03D58A4DeF6fDFc032A56374785a5F571D07Bc11",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x3D83ab507785b95ca5C208bEc80CCe3D5ca98100",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x3E5ee2507cc167C9925Bf10c67D7986581112024",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    },
+    {
+      "address": "0x90402341F0B0e97b23023c0a87de957FB7148E0F",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "nondet_disagree": null
+    }
+  ],
+  "snapshot_note": "Selected public fields from eth_getTransactionByHash; provider configuration and redundant runtime internals omitted."
+}
