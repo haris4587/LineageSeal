@@ -36,8 +36,21 @@ def mock_io(vm,p,rows=None,bodies=None,valid=True):
         body=(ROOT/'fixtures'/e['url'].split('/')[-1]).read_text() if bodies is None else bodies[i]
         vm.mock_web(re.escape(e['url']),{'method':'GET','status':200,'body':body})
     if rows is not None:
-        vm.mock_llm('You are a documentary',json.dumps({'checks':rows}))
+        vm.mock_llm('You are a documentary',json.dumps({'checks':model_rows(rows)}))
     vm.mock_llm('Validate an auditor',json.dumps({'valid':valid}))
+
+
+def model_rows(rows):
+    documents=[(ROOT/'fixtures'/name).read_text().splitlines()
+               for name in ['release.md','source.md','transform.md','policy.md']]
+    rows=copy.deepcopy(rows)
+    for row in rows:
+        for cite in row['citations']:
+            if 'excerpt' in cite: continue
+            index=cite['evidence']; quote=cite.pop('quote')
+            lines=documents[index] if type(index) is int and 0 <= index < 4 else []
+            cite['excerpt']=lines.index(quote) if quote in lines else -1
+    return rows
 
 
 def rows_for(mod,p,status='SUPPORTED'):
@@ -69,7 +82,7 @@ def test_provider_json_text_reaches_consensus(env, monkeypatch):
     mock_io(vm,p,rows)
     monkeypatch.setattr(m.gl.nondet, 'exec_prompt', lambda prompt, **kwargs:
         json.dumps({'valid':True}) if prompt.startswith('Validate an auditor')
-        else json.dumps({'checks':rows}))
+        else json.dumps({'checks':model_rows(rows)}))
     rid=c.submit(json.dumps(p)); c.evaluate(rid)
     assert json.loads(c.get_request(rid))['status']=='VERIFIED'
     assert vm.run_validator() is True
@@ -79,6 +92,21 @@ def test_provider_json_text_reaches_consensus(env, monkeypatch):
 def test_provider_json_text_rejects_bad_objects(env, raw):
     vm,c,m,p=env
     with vm.expect_revert(): m.model_json(raw)
+
+
+@pytest.mark.parametrize('value', [True, -1, 99, '2', 2.0])
+def test_bad_excerpt_reference_rejected(env, value):
+    vm,c,m,p=env
+    rows=model_rows(rows_for(m,p)); rows[0]['citations'][0]['excerpt']=value
+    with vm.expect_revert(): m.resolve_model_rows(rows, m.evidence_excerpts(['test evidence text']))
+
+
+def test_excerpt_resolution_uses_exact_authenticated_text(env):
+    vm,c,m,p=env
+    docs=[(ROOT/'fixtures'/name).read_text() for name in ['release.md','source.md','transform.md','policy.md']]
+    rows=m.resolve_model_rows(model_rows(rows_for(m,p)),m.evidence_excerpts(docs))
+    assert rows==rows_for(m,p)
+    assert m.validate_rows(rows,p,docs)==rows
 
 
 @pytest.mark.parametrize('mutation',[
