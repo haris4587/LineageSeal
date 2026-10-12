@@ -20,6 +20,14 @@ SUPPORTED requires affirmative documentary support. GAP means readable evidence 
 required provenance fact. CONFLICT means explicit incompatible versions, hashes, sources or
 operations. UNKNOWN means genuinely ambiguous or uninterpretable evidence. Missing evidence
 is never affirmative support. Self-asserted claims in the request are not evidence.
+Keep checklist scopes separate. release checks ONLY the output dataset ID, version and digest,
+not its upstream claims. source:<ID> checks ONLY that upstream identity, version and digest.
+lineage:<ID> checks whether the claimed exact upstream release is an input to the output release.
+transformation checks ONLY whether the claimed operation and parameters match the documented
+operation and are reproducible/complete; do NOT propagate source-version/digest mismatches
+into transformation (they belong in source/lineage). policy checks ALL locked policy requirements
+including consistency of the submitted claim with documentary lineage. A wrong source version
+may conflict in source, lineage and policy while release and transformation remain SUPPORTED.
 """
 
 
@@ -210,11 +218,13 @@ independently; do not simply repeat a document's claimed verdict.
 Return ONLY JSON: {"checks":[{"check":"exact requested name","status":"SUPPORTED|GAP|CONFLICT|UNKNOWN",
 "citations":[{"evidence":0,"excerpt":2}]}]}.
 Use the requested check order. Cite contextual text for GAP, explicit contradiction for CONFLICT,
-and affirmative support for SUPPORTED. UNKNOWN can have no citations. Evidence and excerpt indexes
-are zero-based indexes in the supplied documents array of excerpt arrays. Select existing excerpts
+and affirmative support for SUPPORTED. UNKNOWN can have no citations. Use the explicit evidence
+and excerpt numbers supplied with each text; do not count lines or infer indexes. Select excerpts
 of at least 12 characters. Do not reproduce or paraphrase quotes: the contract resolves indexes to
 the exact authenticated text. Use up to three excerpts per check to cover identities and digests.
-DATA=""" + canonical({"claim": package, "requested_checks": check_names(package), "documents": excerpts})
+DATA=""" + canonical({"claim": package, "requested_checks": check_names(package), "documents":
+    [{"evidence": i, "excerpts": [{"excerpt": j, "text": text} for j, text in enumerate(lines)]}
+     for i, lines in enumerate(excerpts)]})
     try:
         raw = gl.nondet.exec_prompt(prompt, response_format="json")
         parsed = model_json(raw)
