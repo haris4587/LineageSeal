@@ -65,6 +65,14 @@ def parse_json(raw: str, maximum: int):
         raise gl.vm.UserError("invalid JSON")
 
 
+def model_json(raw):
+    # Studio providers may return JSON text even with response_format="json".
+    parsed = parse_json(raw, 12000) if isinstance(raw, str) else raw
+    require(isinstance(parsed, dict) and len(canonical(parsed).encode("utf-8")) <= 12000,
+            "invalid model response")
+    return parsed
+
+
 def publisher_url(url: str) -> str:
     require(isinstance(url, str) and len(url) <= 500, "invalid URL")
     match = re.fullmatch(
@@ -184,12 +192,12 @@ and affirmative support for SUPPORTED. UNKNOWN can have no citations. Quotes are
 DATA=""" + canonical({"claim": package, "requested_checks": check_names(package), "documents": documents})
     try:
         raw = gl.nondet.exec_prompt(prompt, response_format="json")
-        require(isinstance(raw, dict) and len(canonical(raw).encode("utf-8")) <= 12000, "invalid model response")
-        parsed = raw
+        parsed = model_json(raw)
         exact_keys(parsed, ("checks",))
         rows = validate_rows(parsed["checks"], package, documents)
         return {"fingerprints": fingerprints, "checks": rows, "outcome": outcome(rows), "reason": "ASSESSED"}, documents
-    except Exception:
+    except Exception as error:
+        print("LineageSeal model validation failed:", type(error).__name__, str(error)[:160])
         return {"fingerprints": fingerprints, "checks": [], "outcome": "INCONCLUSIVE", "reason": "MODEL_FAILURE"}, documents
 
 
@@ -216,7 +224,7 @@ that check for these exact claimed identities, versions and digests. GAP citatio
 context for a genuinely missing fact; CONFLICT citations must show explicit incompatibility.
 Reject irrelevant or misleading citations, even if literal quotes exist. Return ONLY JSON
 {"valid":true} or {"valid":false}. DATA=""" + canonical({"claim": package, "documents": documents, "candidate": rows, "independent": own["checks"]})
-        parsed = gl.nondet.exec_prompt(prompt, response_format="json")
+        parsed = model_json(gl.nondet.exec_prompt(prompt, response_format="json"))
         exact_keys(parsed, ("valid",))
         return parsed["valid"] is True
     except Exception:

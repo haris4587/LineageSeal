@@ -63,6 +63,24 @@ def test_all_outcomes_and_decision_hash(env,status,expected):
     assert vm.run_validator() is True
 
 
+def test_provider_json_text_reaches_consensus(env, monkeypatch):
+    vm,c,m,p=env
+    rows=rows_for(m,p)
+    mock_io(vm,p,rows)
+    monkeypatch.setattr(m.gl.nondet, 'exec_prompt', lambda prompt, **kwargs:
+        json.dumps({'valid':True}) if prompt.startswith('Validate an auditor')
+        else json.dumps({'checks':rows}))
+    rid=c.submit(json.dumps(p)); c.evaluate(rid)
+    assert json.loads(c.get_request(rid))['status']=='VERIFIED'
+    assert vm.run_validator() is True
+
+
+@pytest.mark.parametrize('raw', ['{"checks":[],"checks":[]}', '[]', 'null', 'x'*12001])
+def test_provider_json_text_rejects_bad_objects(env, raw):
+    vm,c,m,p=env
+    with vm.expect_revert(): m.model_json(raw)
+
+
 @pytest.mark.parametrize('mutation',[
     lambda p:p.update(extra='x'),lambda p:p.update(dataset_id=''),lambda p:p.update(version='x\n'),
     lambda p:p.update(artifact_sha256='f'*63),lambda p:p.update(transformation='x'*1601),
